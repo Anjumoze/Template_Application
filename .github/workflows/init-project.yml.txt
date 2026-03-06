@@ -1,0 +1,26 @@
+name: Initialize New Project
+on: [push]
+
+jobs:
+  setup:
+    # Only run on the very first push and NOT on the template repo itself
+    if: github.run_number == 1 && github.repository != 'Anjumoze/Template_Application'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Rename Project in Files
+        run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          # Update package.json
+          sed -i "s/\"name\": \"template-application\"/\"name\": \"$REPO_NAME\"/g" package.json
+          # Update angular.json (crucial for Angular apps)
+          sed -i "s/template-application/$REPO_NAME/g" angular.json
+          
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "chore: auto-rename project to $REPO_NAME"
+          git push
