@@ -3,24 +3,36 @@ on: [push]
 
 jobs:
   setup:
-    # Only run on the very first push and NOT on the template repo itself
+    # Only runs once on the first push and NOT on the template itself
     if: github.run_number == 1 && github.repository != 'Anjumoze/Template_Application'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Rename Project in Files
+      - name: Dynamic Rename
         run: |
+          # 1. Get the new repository name (e.g., "my-new-app")
           REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
-          # Update package.json
-          sed -i "s/\"name\": \"template-application\"/\"name\": \"$REPO_NAME\"/g" package.json
-          # Update angular.json (crucial for Angular apps)
-          sed -i "s/template-application/$REPO_NAME/g" angular.json
+          # 2. Define the old name used in your template
+          OLD_NAME="Template_Application"
           
-      - name: Commit and Push Changes
+          echo "Renaming $OLD_NAME to $REPO_NAME in all files..."
+
+          # 3. Find and replace in configuration files
+          # This covers package.json, angular.json, and others
+          grep -rl "$OLD_NAME" . --exclude-dir=.github | xargs sed -i "s/$OLD_NAME/$REPO_NAME/g"
+          
+          # 4. Optional: If your folder structure uses the name, rename it too
+          # if [ -d "src/app/$OLD_NAME" ]; then mv "src/app/$OLD_NAME" "src/app/$REPO_NAME"; fi
+
+      - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "chore: auto-rename project to $REPO_NAME"
-          git push
+          # Only commit if there are changes to avoid errors
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-rename project to $REPO_NAME" && git push)
