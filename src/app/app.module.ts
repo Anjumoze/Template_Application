@@ -6,34 +6,37 @@ import { AppComponent } from './app.component';
 import { environment } from "src/environments/environment";
 import { MsalInterceptor, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalService, MsalGuard, MsalBroadcastService } from "@azure/msal-angular";
 import { MSALInstanceFactory, MSALInterceptorConfigFactory } from "../app/interceptor/msal.interceptor";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HeaderComponent } from './components/header/header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-    providers: [    {
-      provide: 'environment', useValue: environment
-    },
+  providers: [{
+    provide: 'environment', useValue: environment
+  },
 
-    {
-      provide: MSAL_INSTANCE,
-      useFactory: MSALInstanceFactory
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MsalInterceptor,
-      multi: true
-    },
-    {
-      provide: MSAL_INTERCEPTOR_CONFIG,
-      useFactory: MSALInterceptorConfigFactory
-    },
+  {
+    provide: MSAL_INSTANCE,
+    useFactory: MSALInstanceFactory
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: MsalInterceptor,
+    multi: true
+  },
+  {
+    provide: MSAL_INTERCEPTOR_CONFIG,
+    useFactory: MSALInterceptorConfigFactory
+  },
     //SRDT feature
     // {
     //   provide: HTTP_INTERCEPTORS,

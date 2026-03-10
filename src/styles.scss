@@ -1,1 +1,56 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 /* You can add global styles to this file, and also import other style files */
+.nav-link {
+    border: none !important;
+}
+
+.nav-link.active {
+    color: #0a77ca !important;
+    border-bottom: 2px solid #0a77ca !important;
+    background: #ededed !important;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    color: #0e3b7c !important;
+}
+
+.tab-content-row {
+    border: 1px solid #e8e5e5;
+    margin-right: 1px !important;
+    margin-left: 1px !important;
+    ;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.grid-drop {
+    font-size: 12px !important;
+}
+
+.form-label {
+    font-size: 12px !important;
+}
+
+.tab-content {
+    margin-bottom: 1rem !important;
+}
+
+.danger {
+    background-color: #fcc3b7 !important;
+}
+
+.warning {
+    background-color: #ffddb5 !important;
+}
+
+.success {
+    background-color: #baf6c0 !important;
+}
+
+.navbar-brand {
+    color: white !important;
+}

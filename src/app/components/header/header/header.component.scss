@@ -1,0 +1,177 @@
+#top-navbar {
+    color: #ffffff;
+    padding: 0.085rem 0.5rem;
+    background: #538abc;
+    width: 100%;
+    z-index: 4;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+
+    img.brand-logo {
+        height: 38px;
+        cursor: pointer;
+    }
+
+    .brand-separator {
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+        height: 28px;
+        margin: 0 15px;
+    }
+
+    .brand-prefix {
+        font-weight: 400;
+        font-size: 23px;
+        color: #090e13;
+    }
+
+    .brand-icon {
+        margin: 0 4px;
+        font-size: 23px;
+        color: #e3e3e3;
+    }
+
+    .brand-suffix {
+        font-weight: 600;
+        font-size: 24px;
+        color: #010203;
+    }
+}
+
+.nav-item a {
+    color: #000;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+    color: #103B7D;
+}
+
+.dropdown-menu {
+    padding: 0.3rem 0rem 0.3rem 0rem;
+    font-size: 12px;
+}
+
+.dropdown-menu li .dropdown-item {
+    color: #000;
+}
+
+.head-icon {
+    float: left;
+    background: none !important;
+    padding: 0 8px 8px;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    color: #a3deed;
+}
+
+.main-header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+
+.navbar.main-header .dropdown-toggle:after {
+    position: fixed !important;
+    color: #fff;
+    right: 0px;
+    top: 29px !important;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    right: 12%;
+    left: auto;
+}
+
+.user-icon {
+    border-radius: 39px;
+    width: 40px;
+}
+
+.head-user-link {
+    min-width: 200px;
+}
+
+.profile {
+    border: none;
+    width: 58px;
+}
+
+.header-btn {
+    width: 94%;
+    border-radius: 25px;
+}
+
+.user-dts {
+    font-size: 12px;
+    color: #fff;
+}
+
+.user-name {
+    margin-right: 4rem;
+}
+
+.role-class {
+    // float: left;
+    display: flex;
+    font-size: 11px;
+    font-weight: 100;
+}
+
+.arrow {
+    border: solid #ffffff;
+    margin-left: 8px;
+    border-width: 0 2px 2px 0;
+    margin-bottom: 2px;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    color: #ffffff;
+}
+
+.dropdown-toggle:after {
+    display: none;
+}
+
+.navbar-brand #one-lead-logo {
+    padding-left: 0.3rem;
+}
+
+.top-link-button {
+    display: block;
+    border: 1px solid #A9CBE5 !important;
+    border-radius: 6px !important;
+    background-color: #538abc !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 4px;
+    margin-right: 12px;
+    margin-top: 6px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.top-link-button.active {
+    background-color: #a9cbe5 !important;
+}
+
+.dropdown-menu.show {
+    display: block !important;
+}
+
+.navbar-expand-lg[_ngcontent-dyv-c315] .navbar-nav[_ngcontent-dyv-c315] .dropdown-menu[_ngcontent-dyv-c315] {
+    right: 15% !important;
+    left: auto !important;
+}
